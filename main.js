@@ -13,7 +13,7 @@ const at = (day, hours, minutes = 0) => new Date(2026, 3, day, hours, minutes);
 const scheduler = new SchedulerPro({
     appendTo         : 'container',
     startDate        : at(14, 0),
-    endDate          : at(22, 0),
+    endDate          : at(30, 0),
     viewPreset       : 'dayAndWeek',
     features         : { eventSegments : true },
     columns          : [{ text : 'Employee', field : 'name', width : 120 }],
@@ -35,6 +35,9 @@ const scheduler = new SchedulerPro({
 });
 
 const { project } = scheduler;
+
+// Show the rule on the page: one shift, repeated every Tuesday from 14 to 28 Apr.
+logElement.textContent = `Recurrence rule of event 1: ${project.eventStore.getById(1).recurrenceRule}\nExpected: the same two bars on Tue 14, Tue 21 and Tue 28 Apr.\n\n`;
 const fmt = date => `${date.getMonth() + 1}/${date.getDate()} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
 
 // What the page shows for each Tuesday, read from the model and from the DOM.
