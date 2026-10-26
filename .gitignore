@@ -1,0 +1,5 @@
+node_modules
+.npmrc
+dist
+package-lock.json
+screenshot-run*.png
